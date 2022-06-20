@@ -11,14 +11,8 @@ public class StringCalculator {
         try {
             ArrayList<Integer> integerList = new ArrayList<>();
             String[] stringList = numbers.split(",");
-            if (stringList.length > 1) {
-                for (int i = 0; i < 2; i++) {
-                    sum += Integer.parseInt(stringList[i]);
-                }
-            } else if (stringList.length == 1) {
-                sum = Integer.parseInt(stringList[0]);
-            } else {
-                System.out.println("Nie podano żadnych liczb");
+            for (String n:stringList) {
+                sum += Integer.parseInt(n);
             }
             return sum;
         }
