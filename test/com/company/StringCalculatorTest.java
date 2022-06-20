@@ -16,7 +16,7 @@ class StringCalculatorTest {
     }
     @Test
     void addWrongCharacters(){
-        assertEquals(0,StringCalculator.Add("s/3i2"));
+        assertEquals(5,StringCalculator.Add("s/3i2"));
     }
     @Test
     void addOneNumber() {
@@ -30,13 +30,13 @@ class StringCalculatorTest {
         assertEquals(18,StringCalculator.Add("6,2,3,7"));
     }
     @Test
-    void addMoreNumbersNewLine2(){
+    void addMoreNumbersNewLine(){
         assertEquals(18,StringCalculator.Add("6\n2,\n3\n7"));
 
     }
     @Test
-    void addMoreNumbersNewLine(){
-        assertEquals(0,StringCalculator.Add("6,2 \n,3,7"));
+    void addMoreNumbers2(){
+        assertEquals(92,StringCalculator.Add("61,\n21,3,sa7"));
     }
 }
 
