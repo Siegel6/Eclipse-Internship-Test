@@ -2,30 +2,37 @@ package com.company;
 
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
+
 
 public class StringCalculator {
-    public static int Add(String numbers){
+    public static int Add(String numbers) throws Exception {
         int sum = 0;
         String numbers2;
         try {
-            List<Integer> integerList = new LinkedList<>();
-            numbers2 = numbers.replaceAll("[^0-9]", " ");
-            String[] stringList = numbers2.split(" ");
-            int[] intArr = Stream.of(stringList)
-                    .filter(Pattern.compile("^[\\d]+$").asPredicate())
-                    .mapToInt(Integer::parseInt)
-                    .toArray();
-            System.out.println();
-            for (int n:intArr) {
-                sum+=n;
+            List<Integer> negIntegerList = new LinkedList<>();
+            numbers2 = numbers.replaceAll("[^-0-9]", ",");
+            numbers = numbers2.replaceAll(",+",",");
+            if (numbers.startsWith(",")){
+                numbers=numbers.substring(1);
             }
+            String[] stringArr = numbers.split(",");
+            List<String> stringList = Arrays.asList(stringArr);
+            if (stringList.get(0).equals(",")){
+                stringList.remove(0);
+            }
+            for (String n:stringList) {
+                if (Integer.parseInt(n)>=0){
+                sum+=Integer.parseInt(n);}
+                else{
+                    negIntegerList.add(Integer.parseInt(n));
+                }
 
+            }
+            if (negIntegerList.size()>=1){
+            throw new IllegalArgumentException("negatives not allowed"+ Arrays.toString(negIntegerList.toArray()));}
             return sum;
         }
         catch (NullPointerException e){
@@ -34,6 +41,7 @@ public class StringCalculator {
         catch (NumberFormatException e){
             return 0;
         }
+
 
 
     }
