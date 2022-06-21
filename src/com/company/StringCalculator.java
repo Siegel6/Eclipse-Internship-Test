@@ -25,7 +25,10 @@ public class StringCalculator {
             }
             for (String n:stringList) {
                 if (Integer.parseInt(n)>=0){
-                sum+=Integer.parseInt(n);}
+                    if (Integer.parseInt(n) <= 1000) {
+                        sum+=Integer.parseInt(n);}
+                    }
+
                 else{
                     negIntegerList.add(Integer.parseInt(n));
                 }

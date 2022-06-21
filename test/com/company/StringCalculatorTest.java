@@ -33,8 +33,8 @@ class StringCalculatorTest {
     }
 
     @Test
-    void addMoreNumbers() throws Exception {
-        assertEquals(18, StringCalculator.Add("6,2,3,7"));
+    void addMoreNumbersOverThousand() throws Exception {
+        assertEquals(9, StringCalculator.Add("6324,2,3333,7"));
     }
 
     @Test
